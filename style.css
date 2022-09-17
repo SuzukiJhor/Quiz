@@ -1,31 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
 }
 
 section {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background-image: url(/imagens/background.jpg);
+    background-image: url(/imagens/bjj1.jpg);
     background-size: cover;
     width: 100vw;
     height: 100vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
-.bloco {
-    background-color: white;
-    height: 400px;
-    width: 700px;
+.bloco-quiz {
+    background-color: rgb(105, 102, 102);
+    width: 50%;
+    height: 40vh;
     padding: 20px;
     border-radius: 15px;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+    height: 95%;
+    justify-content: space-between;
+}
+
+form label {
+    display: flex;
+    cursor: pointer;
+}
+
+form label:hover {
+    color: hsl(32, 98%, 56%)
+}
+
+form label h4 {
+    margin-left: 10px;
+}
+
+form h2::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: black;
+    margin-top: 25px;
+}
+
 .botoes {
-    margin-top: 30px;
-    background-color: rgb(190, 44, 44);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     height: 50px;
-    width: 300px;
+    width: 30%;
+    margin-top: 60px;
+}
+
+.botoes div {
+    display: flex;
+    background-color: rgb(105, 102, 102);
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.8rem;
+    border: 2px solid hsl(32, 98%, 56%);
+}
+
+.botoes div:hover {
+    color: hsl(32, 98%, 56%);
+    background-color: #130f0d;
+    transition: 0.2s ease-in-out;
 }
