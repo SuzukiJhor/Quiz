@@ -1,62 +1,132 @@
+const home = document.querySelector('.home-screen')
+const start = document.querySelector('.start input')
 const titleQuestion = document.querySelector('h2');
 const allAlternates = document.querySelectorAll('h4');
-const back = document.querySelector('.anterior');
-const next = document.querySelector('.proxima');
+const button = document.querySelector('.button')
+const backBtn = document.querySelector('.previous');
+const nextBtn = document.querySelector('.next');
+const quiz = document.querySelectorAll('.square-quiz')
+const submit = document.querySelector('.finish')
+const confirma = document.querySelector('.confirmation')
 
-const questions = [{
-        title: 'Quais as ordens das faixas do Jiu-Jitsu?',
-        a: 'Roxa, Azul, Branca, Cinza, Laranja, Amarela, Verde, Preta, Marrom, Vermelha e Coral.',
-        b: 'Azul, Roxa, Branca, Laranja, Verde, Marrom, Cinza, Vermelha, Preta, Coral e Branca.',
-        c: 'Branca, Cinza, Amarela, Laranja, Verde, Azul, Roxa, Marrom, Preta, Coral e Vermelha.',
-        d: 'Cinza, Preta, Marron, Branca, Coral, Vermelha, Azul, Roxa, Cinza, Amarela e Verde.'
-    },
-    {
-        title: 'Qual dos golpes abaixo NÃO é permitido na faixa Branca?',
-        a: 'Arm-lock',
-        b: 'Triangulo',
-        c: 'Mão de vaca',
-        d: 'Omoplata'
-    },
-    {
-        title: 'O Jiu-Jitsu é uma arte muito utilizada no MMA. Na luta entre Anderson Silva e Chael Sonnem, pelo UFC, o brasileiro acertou um golpe que "apagou" o americano. Que golpe foi esse ?',
-        a: 'Mata-Leão',
-        b: 'Arm-Lock',
-        c: 'Triangulo',
-        d: 'omoplata'
-    },
-    {
-        title: 'Um mestre faixa preta pode graduar seus alunos até qual faixa?',
-        a: 'Marrom',
-        b: 'Roxa',
-        c: 'Verde',
-        d: 'Preta'
-    },
-    {
-        title: 'Qual o Nome do estilo de jiu jitsu cuja luta é feita sem kimono?',
-        a: 'Submission',
-        b: 'SubJitsu',
-        c: 'Jiu-Jitsu Sub',
-        d: 'Absoluto'
-    },
-    {
-        title: 'Qual o Nome da família que deu ao jiu jitsu a adaptação ao conhecido Brazilian Jiu Jitsu?',
-        a: 'Família Machado',
-        b: 'Família Nogueira',
-        c: 'Família Souza',
-        d: 'Família Gracie'
-    },
-    {
-        title: 'Qual a idade mínima para um praticante de jiu jitsu se tornar faixa preta?',
-        a: '16',
-        b: '18',
-        c: '19',
-        d: '20'
-    },
-    {
-        title: 'Em que ano o Jiu Jitsu chegou ao Brasil?',
-        a: '1915',
-        b: '1964',
-        c: '1914',
-        d: '1985'
-    },
-];
+const lastQuiz = document.getElementById('10')
+const firstQuiz = document.getElementById('1')
+
+let quizAtual = document.querySelector('.square-quiz')
+
+
+
+
+start.addEventListener('click', (e) => {
+    e.preventDefault()
+    show()
+
+})
+
+nextBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    let nextId = Number(quizAtual.id) + 1
+        // console.log(quizAtual.id)
+        // console.log(nextId)
+
+    quiz.forEach((item) => {
+        item.classList.add('hide')
+        if (item.id == nextId) {
+            item.classList.remove('hide')
+        }
+    })
+    quizAtual.id = Number(quizAtual.id) + 1
+
+    if (quizAtual.id == 1) {
+        quizAtual.classList.remove('hide')
+    }
+
+    stop()
+
+})
+
+backBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    let backId = Number(quizAtual.id) - 1
+        // console.log(quizAtual.id)
+        // console.log(backId);
+
+    quiz.forEach((item) => {
+        item.classList.add('hide')
+        if (item.id == backId) {
+            item.classList.remove('hide')
+        }
+
+    })
+    quizAtual.id = Number(quizAtual.id) - 1
+
+    if (quizAtual.id == 1) {
+        quizAtual.classList.remove('hide')
+    }
+
+    stop()
+
+})
+
+function stop() {
+    if (quizAtual.id > 10) {
+        quizAtual.id = 11
+    }
+    if (quizAtual.id < 1) {
+        quizAtual.id = 0
+    }
+    if (quizAtual.id == 11) {
+        lastQuiz.classList.remove('hide')
+    }
+    if (quizAtual.id == 0) {
+        firstQuiz.classList.remove('hide')
+    }
+
+}
+
+function show() {
+    home.classList.add('hide')
+    button.classList.toggle('hide')
+    quizAtual.classList.toggle('hide')
+    submit.classList.toggle('hide')
+}
+
+submit.addEventListener('click', (e) => {
+    e.preventDefault()
+    confirmation()
+
+    const forms = document.querySelectorAll('form')
+    let answersAll = []
+
+    forms.forEach((item) => {
+
+        let answers = item.radio.value
+        answersAll.push(answers)
+    })
+
+    console.log(answersAll)
+
+})
+
+const confirmation = () => {
+    home.classList.add('hide')
+    button.classList.add('hide')
+    quiz.forEach((item) => {
+        item.classList.add('hide')
+    })
+
+    submit.classList.add('hide')
+    confirma.classList.remove('hide')
+    const can = document.querySelector('.can')
+    can.addEventListener('click', (e) => {
+        e.preventDefault()
+        button.classList.remove('hide')
+        submit.classList.remove('hide')
+        confirma.classList.add('hide')
+        quizAtual.classList.remove('hide')
+    })
+
+
+}

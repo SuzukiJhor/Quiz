@@ -7,47 +7,320 @@
     <title>Quiz-Bjj</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
-    <script src='script.js'></script>
+    <script defer src='script.js'></script>
 
 </head>
 
 <body>
     <section>
+        <div class="home-screen">
+            <div class='welcome'>
+                <h1>Bem vindo ao Quiz sobre Jiu-Jitsu</h1>
+                <h4>Teste seus conhecimentos sobre a arte marcial mais eficiente do mundo!</h4>
+            </div>
 
-        <div class="bloco-quiz">
+            <div class="start">
+                <div class='float'>
+                    <p>Pressione Start</p>
+                    <span>↓</span>
+                </div>
+                <input type="button" name="start" value="start">
+            </div>
+        </div>
+
+        <div id='1' class="square-quiz hide">
             <form action="">
-                <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur laboriosam voluptatem provident enim consectetur. Neque, harum.</h2>
-                <label for="letraA">
-                        <input name='campo-radio' type="radio" id='letraA' class="letraA" value="a">
-                        <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt maiores</h4>
+                <h1>#1</h1>
+                <h2>Quais as ordens das faixas do Jiu-Jitsu?</h2>
+                <label for="A-1">
+                        <input name='radio' type="radio" id='A-1' class="A-1" value="a">
+                        <h4>Roxa, Azul, Branca, Cinza, Laranja, Amarela, Verde, Preta, Marrom, Vermelha e Coral</h4>
                     </label>
 
-                <label for="letraB">
-                        <input name='campo-radio' type="radio" id='letraB' class="letraB" value="b">
-                        <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h4>
+                <label for="B-1">
+                        <input name='radio' type="radio" id='B-1' class="B-1" value="b">
+                        <h4>Azul, Roxa, Branca, Laranja, Verde, Marrom, Cinza, Vermelha, Preta, Coral e Branca.</h4>
                 </label>
 
-                <label for="letraC">
-                        <input name='campo-radio' type="radio" id="letraC" class="letraC" value="c">
-                        <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, repellendus nihil?</h4>
+                <label for="C-1">
+                        <input name='radio' type="radio" id="C-1" class="C-1" value="c">
+                        <h4>Branca, Cinza, Amarela, Laranja, Verde, Azul, Roxa, Marrom, Preta, Coral e Vermelha.</h4>
                     </label>
 
-                <label for="letraD">
-                        <input name='campo-radio' type="radio" id="letraD" class="letraD" value="d">
-                        <h4>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis.</h4>
+                <label for="D-1">
+                        <input name='radio' type="radio" id="D-1" class="D-1" value="d">
+                        <h4>Cinza, Preta, Marron, Branca, Coral, Vermelha, Azul, Roxa, Cinza, Amarela e Verde.</h4>
                     </label>
             </form>
         </div>
 
-        <div class="botoes">
-            <div class="anterior">
+
+        <div id='2' class="square-quiz hide">
+            <form action="">
+                <h1>#2</h1>
+                <h2>Qual dos golpes abaixo NÃO é permitido na faixa Branca?</h2>
+                <label for="A-2">
+                        <input name='radio' type="radio" id='A-2' class="A-2" value="a">
+                        <h4>Arm-lock</h4>
+                    </label>
+
+                <label for="B-2">
+                        <input name='radio' type="radio" id='B-2' class="B-2" value="b">
+                        <h4>Triangulo</h4>
+                </label>
+
+                <label for="C-2">
+                        <input name='radio' type="radio" id="C-2" class="C-2" value="c">
+                        <h4>Mão de vaca</h4>
+                    </label>
+
+                <label for="D-2">
+                        <input name='radio' type="radio" id="D-2" class="D-2" value="d">
+                        <h4>Omoplata</h4>
+                    </label>
+            </form>
+        </div>
+
+
+        <div id='3' class="square-quiz hide">
+            <form action="">
+                <h1>#3</h1>
+                <h2>O Jiu-Jitsu é uma arte muito utilizada no MMA. Na luta entre Anderson Silva e Chael Sonnem, pelo UFC, o brasileiro acertou um golpe que "apagou" o americano. Que golpe foi esse ?</h2>
+                <label for="A-3">
+                        <input name='radio' type="radio" id='A-3' class="A-3" value="a">
+                        <h4>Mata-Leão</h4>
+                    </label>
+
+                <label for="B-3">
+                        <input name='radio' type="radio" id='B-3' class="B-3" value="b">
+                        <h4>Arm-Lock</h4>
+                </label>
+
+                <label for="C-3">
+                        <input name='radio' type="radio" id="C-3" class="C-3" value="c">
+                        <h4>Triangulo</h4>
+                    </label>
+
+                <label for="D-3">
+                        <input name='radio' type="radio" id="D-3" class="D-3" value="d">
+                        <h4>Omoplata</h4>
+                    </label>
+            </form>
+        </div>
+
+
+        <div id='4' class="square-quiz hide">
+            <form action="">
+                <h1>#4</h1>
+                <h2>Um mestre faixa preta pode graduar seus alunos até qual faixa?</h2>
+                <label for="A-4">
+                        <input name='radio' type="radio" id='A-4' class="A-4" value="a">
+                        <h4>Marrom</h4>
+                    </label>
+
+                <label for="B-4">
+                        <input name='radio' type="radio" id='B-4' class="B-4" value="b">
+                        <h4>Roxa</h4>
+                </label>
+
+                <label for="C-4">
+                        <input name='radio' type="radio" id="C-4" class="C-4" value="c">
+                        <h4>Verde</h4>
+                    </label>
+
+                <label for="D-4">
+                        <input name='radio' type="radio" id="D-4" class="D-4" value="d">
+                        <h4>Preta</h4>
+                    </label>
+            </form>
+        </div>
+
+
+        <div id='5' class="square-quiz hide">
+            <form action="">
+                <h1>#5</h1>
+                <h2>Qual o Nome do estilo de jiu jitsu cuja luta é feita sem kimono?</h2>
+                <label for="A-5">
+                        <input name='radio' type="radio" id='A-5' class="A-5" value="a">
+                        <h4>NO GI</h4>
+                    </label>
+
+                <label for="B-5">
+                        <input name='radio' type="radio" id='B-5' class="B-5" value="b">
+                        <h4>SubJitsu</h4>
+                </label>
+
+                <label for="C-5">
+                        <input name='radio' type="radio" id="C-5" class="C-5" value="c">
+                        <h4>Jiu-Jitsu Sub</h4>
+                    </label>
+
+                <label for="D-5">
+                        <input name='radio' type="radio" id="D-5" class="D-5" value="d">
+                        <h4>Absoluto</h4>
+                    </label>
+            </form>
+        </div>
+
+
+        <div id='6' class="square-quiz hide">
+            <form action="">
+                <h1>#6</h1>
+                <h2>Qual o Nome da família que deu ao jiu jitsu a adaptação ao conhecido Brazilian Jiu Jitsu?</h2>
+                <label for="A-6">
+                        <input name='radio' type="radio" id='A-6' class="A-6" value="a">
+                        <h4>Família Machado</h4>
+                    </label>
+
+                <label for="B-6">
+                        <input name='radio' type="radio" id='B-6' class="B-6" value="b">
+                        <h4>Família Nogueira</h4>
+                </label>
+
+                <label for="C-6">
+                        <input name='radio' type="radio" id="C-6" class="C-6" value="c">
+                        <h4>Família Souza</h4>
+                    </label>
+
+                <label for="D-6">
+                        <input name='radio' type="radio" id="D-6" class="D-6" value="d">
+                        <h4>Família Gracie</h4>
+                    </label>
+            </form>
+        </div>
+
+
+        <div id='7' class="square-quiz hide">
+            <form action="">
+                <h1>#7</h1>
+                <h2>Qual a idade mínima para um praticante de jiu jitsu se tornar faixa preta?</h2>
+                <label for="A-7">
+                        <input name='radio' type="radio" id='A-7' class="A-7" value="a">
+                        <h4>16</h4>
+                    </label>
+
+                <label for="B-7">
+                        <input name='radio' type="radio" id='B-7' class="B-7" value="b">
+                        <h4>18</h4>
+                </label>
+
+                <label for="C-7">
+                        <input name='radio' type="radio" id="C-7" class="C-7" value="c">
+                        <h4>19</h4>
+                    </label>
+
+                <label for="D-7">
+                        <input name='radio' type="radio" id="D-7" class="D-7" value="d">
+                        <h4>20</h4>
+                    </label>
+            </form>
+        </div>
+
+
+        <div id="8" class="square-quiz hide">
+            <form action="">
+                <h1>#8</h1>
+                <h2>Em que ano o Jiu Jitsu chegou ao Brasil?</h2>
+                <label for="A-8">
+                        <input name='radio' type="radio" id='A-8' class="A-8" value="a">
+                        <h4>1915</h4>
+                    </label>
+
+                <label for="B-8">
+                        <input name='radio' type="radio" id='B-8' class="B-8" value="b">
+                        <h4>1964</h4>
+                </label>
+
+                <label for="C-8">
+                        <input name='radio' type="radio" id="C-8" class="C-8" value="c">
+                        <h4>1914</h4>
+                    </label>
+
+                <label for="D-8">
+                        <input name='radio' type="radio" id="D-8" class="D-8" value="d">
+                        <h4>1985</h4>
+                    </label>
+            </form>
+        </div>
+
+
+        <div id="9" class="square-quiz hide">
+            <form action="">
+                <h1>#9</h1>
+                <h2>Qual a idade mínima para se tornar um faixa azul?</h2>
+                <label for="A-9">
+                        <input name='radio' type="radio" id='A-9' class="A-9" value="a">
+                        <h4>14</h4>
+                    </label>
+
+                <label for="B-9">
+                        <input name='radio' type="radio" id='B-9' class="B-9" value="b">
+                        <h4>18</h4>
+                </label>
+
+                <label for="C-9">
+                        <input name='radio' type="radio" id="C-9" class="C-9" value="c">
+                        <h4>16</h4>
+                    </label>
+
+                <label for="D-9">
+                        <input name='radio' type="radio" id="D-9" class="D-9" value="d">
+                        <h4>15</h4>
+                    </label>
+            </form>
+        </div>
+
+
+        <div id="10" class="square-quiz hide">
+            <form action="">
+                <h1>#10</h1>
+                <h2>Qual o lutador brasileiro que conseguiu ultrapassar Royce Gracie nas finalizações do UFC?</h2>
+                <label for="A-10">
+                        <input name='radio' type="radio" id='A-10' class="A-10" value="a">
+                        <h4>Demian Maia</h4>
+                    </label>
+
+                <label for="B-10">
+                        <input name='radio' type="radio" id='B-10' class="B-10" value="b">
+                        <h4>Anderson Silva</h4>
+                </label>
+
+                <label for="C-10">
+                        <input name='radio' type="radio" id="C-10" class="C-10" value="c">
+                        <h4>Charles do Bronx</h4>
+                    </label>
+
+                <label for="D-10">
+                        <input name='radio' type="radio" id="D-10" class="D-10" value="d">
+                        <h4>Ronaldo Jacaré</h4>
+                    </label>
+            </form>
+        </div>
+
+        <div class="button hide">
+            <div class="previous">
                 &#171;
             </div>
-            <div class="proxima">
+
+            <div class="next">
                 &#187;
             </div>
-
         </div>
+
+        <div class="finish hide">
+            <button name="enter">Finalizar!</button>
+        </div>
+
+        <div class="confirmation hide">
+            <div class="confirmation-inside">
+                <span>Tem certeza?</span>
+            </div>
+            <div class="confirmation-button">
+                <button class="fin">Finalizar</button>
+                <button class="can">Cancelar</button>
+            </div>
+        </div>
+
 
 
     </section>
