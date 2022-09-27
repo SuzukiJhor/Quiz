@@ -1,132 +1,111 @@
-const home = document.querySelector('.home-screen')
-const start = document.querySelector('.start input')
-const titleQuestion = document.querySelector('h2');
-const allAlternates = document.querySelectorAll('h4');
-const button = document.querySelector('.button')
+const startBtn = document.querySelector('.start input')
 const backBtn = document.querySelector('.previous');
 const nextBtn = document.querySelector('.next');
-const quiz = document.querySelectorAll('.square-quiz')
-const submit = document.querySelector('.finish')
-const confirma = document.querySelector('.confirmation')
+const submitBtn = document.querySelector('.finish')
 
-const lastQuiz = document.getElementById('10')
-const firstQuiz = document.getElementById('1')
+const questionsAll = document.querySelectorAll('.square-quiz')
 
-let quizAtual = document.querySelector('.square-quiz')
+let firstQuestion = document.querySelector('.square-quiz')
 
 
 
+let correctAnswers = ['c', 'c', 'c', 'd', 'a', 'd', 'b', 'c', 'c', 'c']
 
-start.addEventListener('click', (e) => {
-    e.preventDefault()
-    show()
+const showGame = event => {
+    event.preventDefault()
+    const home = document.querySelector('.home-screen')
+    home.classList.add('hide')
 
-})
+    const functionButton = document.querySelector('.button')
+    functionButton.classList.remove('hide')
 
-nextBtn.addEventListener('click', (e) => {
-    e.preventDefault()
+    firstQuestion.classList.remove('hide')
+    submitBtn.classList.remove('hide')
+}
 
-    let nextId = Number(quizAtual.id) + 1
-        // console.log(quizAtual.id)
-        // console.log(nextId)
+const specialsconditions = () => {
+    const lastQuiz = document.getElementById('10')
+    const firstQuiz = document.getElementById('1')
+    if (firstQuestion.id > 10) {
+        firstQuestion.id = 11
+        lastQuiz.classList.remove('hide')
+    }
+    if (firstQuestion.id < 1) {
+        firstQuestion.id = 0
+        firstQuiz.classList.remove('hide')
+    }
+    if (firstQuestion.id == 1) {
+        firstQuestion.classList.remove('hide')
+    }
+}
 
-    quiz.forEach((item) => {
+nextBtn.addEventListener('click', event => {
+    event.preventDefault()
+
+    let nextId = Number(firstQuestion.id) + 1
+    questionsAll.forEach((item) => {
         item.classList.add('hide')
         if (item.id == nextId) {
             item.classList.remove('hide')
         }
     })
-    quizAtual.id = Number(quizAtual.id) + 1
-
-    if (quizAtual.id == 1) {
-        quizAtual.classList.remove('hide')
-    }
-
-    stop()
+    firstQuestion.id++
+        specialsconditions()
 
 })
 
-backBtn.addEventListener('click', (e) => {
-    e.preventDefault()
+backBtn.addEventListener('click', event => {
+    event.preventDefault()
 
-    let backId = Number(quizAtual.id) - 1
-        // console.log(quizAtual.id)
-        // console.log(backId);
-
-    quiz.forEach((item) => {
+    let backId = Number(firstQuestion.id) - 1
+    questionsAll.forEach((item) => {
         item.classList.add('hide')
         if (item.id == backId) {
             item.classList.remove('hide')
         }
-
     })
-    quizAtual.id = Number(quizAtual.id) - 1
-
-    if (quizAtual.id == 1) {
-        quizAtual.classList.remove('hide')
-    }
-
-    stop()
+    firstQuestion.id--
+        specialsconditions()
 
 })
 
-function stop() {
-    if (quizAtual.id > 10) {
-        quizAtual.id = 11
-    }
-    if (quizAtual.id < 1) {
-        quizAtual.id = 0
-    }
-    if (quizAtual.id == 11) {
-        lastQuiz.classList.remove('hide')
-    }
-    if (quizAtual.id == 0) {
-        firstQuiz.classList.remove('hide')
-    }
-
-}
-
-function show() {
-    home.classList.add('hide')
-    button.classList.toggle('hide')
-    quizAtual.classList.toggle('hide')
-    submit.classList.toggle('hide')
-}
-
-submit.addEventListener('click', (e) => {
-    e.preventDefault()
-    confirmation()
-
+const getAnswers = () => {
     const forms = document.querySelectorAll('form')
-    let answersAll = []
-
+    let answersAll = [];
     forms.forEach((item) => {
-
         let answers = item.radio.value
+        console.log(item.radio.value)
         answersAll.push(answers)
     })
 
-    console.log(answersAll)
-
-})
-
-const confirmation = () => {
-    home.classList.add('hide')
-    button.classList.add('hide')
-    quiz.forEach((item) => {
-        item.classList.add('hide')
-    })
-
-    submit.classList.add('hide')
-    confirma.classList.remove('hide')
-    const can = document.querySelector('.can')
-    can.addEventListener('click', (e) => {
-        e.preventDefault()
-        button.classList.remove('hide')
-        submit.classList.remove('hide')
-        confirma.classList.add('hide')
-        quizAtual.classList.remove('hide')
-    })
 
 
+    showScore(answersAll)
 }
+
+
+const confirmation = event => {
+    event.preventDefault()
+    const confirm = document.querySelector('.confirmation')
+    confirm.classList.remove('hide')
+    confirm.addEventListener('click', event => {
+        const classElement = event.target.className
+        if (classElement == 'can') {
+            confirm.classList.add('hide')
+        }
+        if (classElement == 'fin') {
+            return getAnswers()
+        }
+
+    })
+}
+
+
+const showScore = (item) => {
+
+    console.log(item)
+    item = ''
+}
+
+startBtn.addEventListener('click', showGame)
+submitBtn.addEventListener('click', confirmation)

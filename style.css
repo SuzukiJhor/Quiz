@@ -18,12 +18,11 @@ section {
 }
 
 .home-screen {
-    margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-image: url(/imagens/leandroLo.jpg);
+    background-image: url(/imagens/jiujitsuHand.jpg);
     background-size: cover;
     width: 100vw;
     height: 100vh;
@@ -36,8 +35,8 @@ section {
     justify-content: center;
     flex-direction: column;
     width: 60%;
-    height: 15%;
-    background-color: rgba(189, 173, 173, 0.5);
+    height: 25%;
+    background-color: rgb(105, 102, 102);
     border: 2px solid hsl(32, 98%, 56%);
 }
 
@@ -86,6 +85,7 @@ section {
 .start input {
     background-color: hsl(32, 98%, 56%);
     font-size: 20px;
+    width: 150px;
     padding: 10px 15px;
     border: none;
     border: 1px solid white;
@@ -214,19 +214,28 @@ h1 {
 
 .confirmation {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    width: 100vw !important;
+    height: 100vh !important;
+    background-color: rgba(0, 0, 0, .8);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.confirmation-inside {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
     background-color: #130f0d;
-    width: 40%;
+    width: 60%;
     height: 20vh;
     border: 2px solid hsl(32, 98%, 56%);
     color: hsl(32, 98%, 56%);
     border-radius: 15px;
-}
-
-.confirmation-inside {
-    margin-bottom: 55px;
+    margin: 10% auto;
 }
 
 .confirmation-inside span {
@@ -283,7 +292,7 @@ h1 {
         font-size: 1.2rem;
         padding: 2px;
     }
-    .confirmation {
+    .confirmation inside {
         width: 70%;
         height: 25vh;
     }
@@ -354,11 +363,16 @@ h1 {
     .button {
         width: 60%;
     }
-    .confirmation {
+    .confirmation inside {
         width: 90%;
     }
     .confirmation-button button {
         font-size: 0.9rem;
         width: 40%;
     }
+}
+
+
+}
+
 }
