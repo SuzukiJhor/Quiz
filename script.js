@@ -1,11 +1,17 @@
 const startBtn = document.querySelector('.start input')
-const backBtn = document.querySelector('.previous');
+const backBtn = document.querySelector('.prev');
 const nextBtn = document.querySelector('.next');
 const submitBtn = document.querySelector('.finish')
 
 const questionsAll = document.querySelectorAll('.square-quiz')
 
 let firstQuestion = document.querySelector('.square-quiz')
+
+const state = {
+    page: 1,
+    firstPage: 1,
+    lastPage: 10
+}
 
 
 
@@ -23,51 +29,41 @@ const showGame = event => {
     submitBtn.classList.remove('hide')
 }
 
-const specialsconditions = () => {
-    const lastQuiz = document.getElementById('10')
-    const firstQuiz = document.getElementById('1')
-    if (firstQuestion.id > 10) {
-        firstQuestion.id = 11
-        lastQuiz.classList.remove('hide')
+const controlsButton = event => {
+    event.preventDefault()
+    const targetClass = event.target.className
+    if (targetClass == 'next') {
+        state.page++
+        if (state.page > state.lastPage) {
+            state.page--
+        }
+            questionsAll.forEach((item) => {
+                item.classList.add('hide')
+                if (item.id == state.page) {
+                    item.classList.remove('hide')
+                }
+            })
+       
     }
-    if (firstQuestion.id < 1) {
-        firstQuestion.id = 0
-        firstQuiz.classList.remove('hide')
+
+    if (targetClass == 'prev') {
+        state.page--
+            if (state.page < state.firstPage) {
+                state.page++
+            }
+        questionsAll.forEach((item) => {
+            item.classList.add('hide')
+            if (item.id == state.page) {
+                item.classList.remove('hide')
+            }
+        })
+
     }
-    if (firstQuestion.id == 1) {
-        firstQuestion.classList.remove('hide')
-    }
+    console.log(state.page)
 }
+nextBtn.addEventListener('click', controlsButton)
 
-nextBtn.addEventListener('click', event => {
-    event.preventDefault()
-
-    let nextId = Number(firstQuestion.id) + 1
-    questionsAll.forEach((item) => {
-        item.classList.add('hide')
-        if (item.id == nextId) {
-            item.classList.remove('hide')
-        }
-    })
-    firstQuestion.id++
-        specialsconditions()
-
-})
-
-backBtn.addEventListener('click', event => {
-    event.preventDefault()
-
-    let backId = Number(firstQuestion.id) - 1
-    questionsAll.forEach((item) => {
-        item.classList.add('hide')
-        if (item.id == backId) {
-            item.classList.remove('hide')
-        }
-    })
-    firstQuestion.id--
-        specialsconditions()
-
-})
+backBtn.addEventListener('click', controlsButton)
 
 const getAnswers = () => {
     const forms = document.querySelectorAll('form')
