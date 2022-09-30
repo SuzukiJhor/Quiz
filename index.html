@@ -297,11 +297,11 @@
         </div>
 
         <div class="button hide">
-            <div class="prev">
+            <div onclick="controlBtnPrev()" class="prev">
                 &#171;
             </div>
 
-            <div class="next">
+            <div onclick="controlBtnNext()" class="next">
                 &#187;
             </div>
         </div>
@@ -317,8 +317,8 @@
                 <span>Tem certeza?</span>
 
                 <div class="confirmation-button">
-                    <button class="fin">Finalizar</button>
-                    <button class="can">Cancelar</button>
+                    <button onclick='getAnswers()' class="fin">Finalizar</button>
+                    <button onclick="cancelEvent()" class="can">Cancelar</button>
                 </div>
             </div>
 

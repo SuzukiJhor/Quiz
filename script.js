@@ -1,9 +1,9 @@
 const startBtn = document.querySelector('.start input')
-const backBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
 const submitBtn = document.querySelector('.finish')
 const questionsAll = document.querySelectorAll('.square-quiz')
 const forms = document.querySelectorAll('form')
+const next = document.querySelector('.next')
+const prev = document.querySelector('.prev')
 
 const state = {
     page: 1,
@@ -13,6 +13,45 @@ const state = {
 
 let correctAnswers = ['c', 'c', 'c', 'd', 'a', 'd', 'b', 'c', 'c', 'c']
 
+const controlBtnNext = () => {
+    prev.style.visibility = 'visible'
+    state.page++
+        if (state.page > state.lastPage) {
+            state.page--
+        }
+
+    questionsAll.forEach((item) => {
+        item.classList.add('hide')
+        if (item.id == state.page) {
+            item.classList.remove('hide')
+        }
+    })
+    console.log(state.page)
+    if (state.page == state.lastPage) {
+        next.style.visibility = 'hidden'
+    }
+
+
+}
+
+const controlBtnPrev = () => {
+    next.style.visibility = 'visible'
+    state.page--
+        if (state.page < state.firstPage) {
+            state.page++
+        }
+
+    questionsAll.forEach((item) => {
+        item.classList.add('hide')
+        if (item.id == state.page) {
+            item.classList.remove('hide')
+        }
+    })
+    if (state.page == state.firstPage) {
+        prev.style.visibility = 'hidden'
+    }
+}
+
 const showGame = event => {
     event.preventDefault()
     document.querySelector('.home-screen').classList.add('hide')
@@ -21,79 +60,43 @@ const showGame = event => {
     submitBtn.classList.remove('hide')
 }
 
-const controlsButton = event => {
-    event.preventDefault()
-    const targetClass = event.target.className
-    if (targetClass == 'next') {
-        state.page++
-            if (state.page > state.lastPage) {
-                state.page--
-            }
-
-        questionsAll.forEach((item) => {
-            item.classList.add('hide')
-            if (item.id == state.page) {
-                item.classList.remove('hide')
-            }
-        })
-    }
-
-    if (targetClass == 'prev') {
-        state.page--
-            if (state.page < state.firstPage) {
-                state.page++
-            }
-
-        questionsAll.forEach((item) => {
-            item.classList.add('hide')
-            if (item.id == state.page) {
-                item.classList.remove('hide')
-            }
-        })
-    }
+const cancelEvent = () => {
+    const confirm = document.querySelector('.confirmation')
+    confirm.classList.add('hide')
 }
 
 const confirmation = event => {
     event.preventDefault()
     const confirm = document.querySelector('.confirmation')
     confirm.classList.remove('hide')
-    confirm.addEventListener('click', event => {
-        const elementClass = event.target.className
-        if (elementClass == 'fin') {
-            getAnswers()
-        }
-        if (elementClass == 'can') {
-            confirm.classList.add('hide')
-        }
-
-    })
 }
 
-const insertScoreInfo = (message, score) => {
+const insertScoreDisplay = (message, score) => {
     let display = document.querySelector('.confirmation-inside')
+    display.style.width = '400px'
     display.innerHTML = ''
 
-    let scoreDiv = document.createElement('div')
-    let scoreh2 = document.createElement('h2')
-    scoreh2.innerText = score + '%'
-    let scoreh1 = document.createElement('h1')
-    scoreh1.innerText = message
 
-    scoreDiv.appendChild(scoreh1)
-    scoreDiv.appendChild(scoreh2)
+    let scoreDiv = document.createElement('div')
+    let scorePoints = document.createElement('h2')
+    scorePoints.innerText = score + ' %'
+    let scoreMessage = document.createElement('h1')
+    scoreMessage.innerText = message
+
+    scoreDiv.appendChild(scoreMessage)
+    scoreDiv.appendChild(scorePoints)
 
     display.appendChild(scoreDiv)
 }
 
-const getScoreMessage = (totalScore) => {
+const getMessage = (totalScore) => {
     const messages = {
-        0: 'Você errou todas =(',
+        0: 'Ops! você errou todas =(',
         100: 'Parabéns, você acertou todas!'
     }
 
     return messages[totalScore] || 'Você acertou'
 }
-
 
 const getAnswers = () => {
     let usersAnswers = []
@@ -113,12 +116,8 @@ const getScore = (usersAnswers) => {
             totalScore += 10
     })
 
-    const scoreMessage = getScoreMessage(totalScore)
-
-    insertScoreInfo(scoreMessage, totalScore)
+    insertScoreDisplay(getMessage(totalScore), totalScore)
 }
 
-nextBtn.addEventListener('click', controlsButton)
-backBtn.addEventListener('click', controlsButton)
 startBtn.addEventListener('click', showGame)
 submitBtn.addEventListener('click', confirmation)
