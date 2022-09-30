@@ -4,8 +4,8 @@ const questionsAll = document.querySelectorAll('.square-quiz')
 const forms = document.querySelectorAll('form')
 const next = document.querySelector('.next')
 const prev = document.querySelector('.prev')
-const display = document.querySelector('.confirmation-inside')
-display.style.width = '400px'
+const displayInside = document.querySelector('.confirmation-inside')
+displayInside.style.width = '400px'
 
 const state = {
     page: 1,
@@ -76,7 +76,7 @@ const confirmSubmit = event => {
 const insertMessageDisplay = message => {
     // let display = document.querySelector('.confirmation-inside')
     // display.style.width = '400px'
-    display.innerHTML = ''
+    displayInside.innerHTML = ''
 
     let scoreDiv = document.createElement('div')
         // scoreDiv.style.textAlign = 'center'
@@ -84,7 +84,7 @@ const insertMessageDisplay = message => {
     scoreMessage.innerText = message
 
     scoreDiv.appendChild(scoreMessage)
-    display.appendChild(scoreDiv)
+    displayInside.appendChild(scoreDiv)
 }
 
 const getMessage = score => {
@@ -106,7 +106,7 @@ const getAnswers = () => {
     getScore(usersAnswers)
 }
 
-const getScore = (usersAnswers) => {
+const getScore = usersAnswers => {
     let totalScore = 0
 
     usersAnswers.forEach((item, index) => {
@@ -115,13 +115,13 @@ const getScore = (usersAnswers) => {
     })
 
     insertMessageDisplay(getMessage(totalScore))
-    scoreAnimation(totalScore)
+    animateScore(totalScore)
 }
 
-const scoreAnimation = score => {
+const animateScore = score => {
     let counter = 0
     const animationElment = document.createElement('h1')
-    display.appendChild(animationElment)
+    displayInside.appendChild(animationElment)
     const timer = setInterval(() => {
         if (counter === score) {
             clearInterval(timer)
@@ -129,7 +129,7 @@ const scoreAnimation = score => {
         animationElment
             .textContent = `${counter}%`
         counter++
-    }, 30)
+    }, 15)
 }
 
 startBtn.addEventListener('click', showGame)
