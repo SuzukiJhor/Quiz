@@ -4,6 +4,8 @@ const questionsAll = document.querySelectorAll('.square-quiz')
 const forms = document.querySelectorAll('form')
 const next = document.querySelector('.next')
 const prev = document.querySelector('.prev')
+const display = document.querySelector('.confirmation-inside')
+display.style.width = '400px'
 
 const state = {
     page: 1,
@@ -65,37 +67,33 @@ const cancelEvent = () => {
     confirm.classList.add('hide')
 }
 
-const confirmation = event => {
+const confirmSubmit = event => {
     event.preventDefault()
     const confirm = document.querySelector('.confirmation')
     confirm.classList.remove('hide')
 }
 
-const insertScoreDisplay = (message, score) => {
-    let display = document.querySelector('.confirmation-inside')
-    display.style.width = '400px'
+const insertMessageDisplay = message => {
+    // let display = document.querySelector('.confirmation-inside')
+    // display.style.width = '400px'
     display.innerHTML = ''
 
-
     let scoreDiv = document.createElement('div')
-    let scorePoints = document.createElement('h2')
-    scorePoints.innerText = score + ' %'
+        // scoreDiv.style.textAlign = 'center'
     let scoreMessage = document.createElement('h1')
     scoreMessage.innerText = message
 
     scoreDiv.appendChild(scoreMessage)
-    scoreDiv.appendChild(scorePoints)
-
     display.appendChild(scoreDiv)
 }
 
-const getMessage = (totalScore) => {
+const getMessage = score => {
     const messages = {
         0: 'Ops! você errou todas =(',
         100: 'Parabéns, você acertou todas!'
     }
 
-    return messages[totalScore] || 'Você acertou'
+    return messages[score] || "Você acertou"
 }
 
 const getAnswers = () => {
@@ -116,8 +114,23 @@ const getScore = (usersAnswers) => {
             totalScore += 10
     })
 
-    insertScoreDisplay(getMessage(totalScore), totalScore)
+    insertMessageDisplay(getMessage(totalScore))
+    scoreAnimation(totalScore)
+}
+
+const scoreAnimation = score => {
+    let counter = 0
+    const animationElment = document.createElement('h1')
+    display.appendChild(animationElment)
+    const timer = setInterval(() => {
+        if (counter === score) {
+            clearInterval(timer)
+        }
+        animationElment
+            .textContent = `${counter}%`
+        counter++
+    }, 30)
 }
 
 startBtn.addEventListener('click', showGame)
-submitBtn.addEventListener('click', confirmation)
+submitBtn.addEventListener('click', confirmSubmit)
