@@ -1,11 +1,14 @@
 const startBtn = document.querySelector('.start input')
+const restartBtn = document.querySelector('.restart')
 const submitBtn = document.querySelector('.finish')
 const questionsAll = document.querySelectorAll('.square-quiz')
-const forms = document.querySelectorAll('form')
 const next = document.querySelector('.next')
 const prev = document.querySelector('.prev')
-const displayInside = document.querySelector('.confirmation-inside')
-displayInside.style.width = '400px'
+const externalDisplay = document.querySelector('.confirmation')
+const internalDisplay = document.querySelector('.confirmation-inside')
+internalDisplay.style.width = '350px'
+const displayBack = document.querySelector('.confirmation')
+
 
 const state = {
     page: 1,
@@ -21,14 +24,12 @@ const controlBtnNext = () => {
         if (state.page > state.lastPage) {
             state.page--
         }
-
     questionsAll.forEach((item) => {
         item.classList.add('hide')
         if (item.id == state.page) {
             item.classList.remove('hide')
         }
     })
-    console.log(state.page)
     if (state.page == state.lastPage) {
         next.style.visibility = 'hidden'
     }
@@ -42,7 +43,6 @@ const controlBtnPrev = () => {
         if (state.page < state.firstPage) {
             state.page++
         }
-
     questionsAll.forEach((item) => {
         item.classList.add('hide')
         if (item.id == state.page) {
@@ -69,22 +69,17 @@ const cancelEvent = () => {
 
 const confirmSubmit = event => {
     event.preventDefault()
-    const confirm = document.querySelector('.confirmation')
-    confirm.classList.remove('hide')
+    externalDisplay.classList.remove('hide')
 }
 
 const insertMessageDisplay = message => {
-    // let display = document.querySelector('.confirmation-inside')
-    // display.style.width = '400px'
-    displayInside.innerHTML = ''
-
+    internalDisplay.textContent = ''
     let scoreDiv = document.createElement('div')
-        // scoreDiv.style.textAlign = 'center'
     let scoreMessage = document.createElement('h1')
     scoreMessage.innerText = message
-
     scoreDiv.appendChild(scoreMessage)
-    displayInside.appendChild(scoreDiv)
+    internalDisplay.appendChild(scoreDiv)
+    insertRestart()
 }
 
 const getMessage = score => {
@@ -98,7 +93,7 @@ const getMessage = score => {
 
 const getAnswers = () => {
     let usersAnswers = []
-
+    const forms = document.querySelectorAll('form')
     forms.forEach((item) => {
         usersAnswers.push(item.radio.value)
     })
@@ -120,17 +115,39 @@ const getScore = usersAnswers => {
 
 const animateScore = score => {
     let counter = 0
-    const animationElment = document.createElement('h1')
-    displayInside.appendChild(animationElment)
+    const animationElement = document.createElement('h1')
+    internalDisplay.appendChild(animationElement)
     const timer = setInterval(() => {
         if (counter === score) {
             clearInterval(timer)
         }
-        animationElment
+        animationElement
             .textContent = `${counter}%`
         counter++
     }, 15)
 }
 
+const insertRestart = () => {
+    externalDisplay.appendChild(restartBtn)
+    restartBtn.classList.remove('hide')
+}
+
+const restart = () => {
+    var inputs = document.querySelectorAll('input[name=radio]')
+    inputs.forEach(item => {
+        if (item.checked) {
+            item.checked = false
+        }
+    })
+
+    // internalDisplay.classList.add('hide');
+    externalDisplay.classList.add('hide');
+    console.log(internalDisplay)
+
+
+}
+
 startBtn.addEventListener('click', showGame)
 submitBtn.addEventListener('click', confirmSubmit)
+restartBtn.addEventListener('click', restart)
+    // restart()

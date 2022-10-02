@@ -61,6 +61,27 @@ section {
     padding: 15px;
 }
 
+.restart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 30px;
+    padding: 15px;
+}
+
+.restart input {
+    background-color: hsl(32, 98%, 56%);
+    font-size: 20px;
+    width: 150px;
+    padding: 10px 15px;
+    border: none;
+    border: 1px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
 .float {
     display: flex;
     justify-content: center;
@@ -216,6 +237,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     width: 100vw !important;
     height: 100vh !important;
     background-color: rgba(0, 0, 0, .8);
