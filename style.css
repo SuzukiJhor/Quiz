@@ -36,8 +36,8 @@ section {
     flex-direction: column;
     width: 60%;
     height: 25%;
-    background-color: rgb(105, 102, 102);
-    border: 2px solid hsl(32, 98%, 56%);
+    background-color: rgba(105, 102, 102, .9);
+    border: 4px solid hsl(32, 98%, 56%);
 }
 
 .welcome h1 {
@@ -47,7 +47,7 @@ section {
 }
 
 .welcome h4 {
-    margin: 5px 5px 5px 15px;
+    margin: 5px 5px 15px;
     font-size: 1.2rem;
     font-weight: 700;
 }
@@ -82,6 +82,13 @@ section {
     margin-top: 30px;
 }
 
+.restart input:hover {
+    cursor: pointer;
+    background-color: #130f0d;
+    color: hsl(32, 98%, 56%);
+    border-color: hsl(32, 98%, 56%);
+}
+
 .float {
     display: flex;
     justify-content: center;
@@ -98,40 +105,35 @@ section {
 }
 
 .float span {
-    color: white;
+    color: hsl(32, 98%, 56%);
     margin: 0;
     font-size: 30px;
+    font-weight: 700;
 }
 
 .start input {
-    background-color: hsl(32, 98%, 56%);
-    font-size: 20px;
-    width: 150px;
-    padding: 10px 15px;
     border: none;
-    border: 1px solid white;
+    margin-top: 20px;
+    padding: 8px;
+    width: 20vw;
+    height: 45px;
     border-radius: 10px;
-    cursor: pointer;
-    margin-top: 30px;
-}
-
-.start input:hover {
-    background-color: hsl(32, 91%, 17%);
-    color: hsl(32, 98%, 56%);
-    border-color: hsl(32, 98%, 56%);
+    border: 3px solid #130f0d;
+    background-color: hsl(32, 98%, 56%);
+    color: #130f0d;
+    font-weight: 700;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: 0.2s ease-in-out;
 }
 
-@keyframes float {
-    0% {
-        transform: translatey(0px);
-    }
-    50% {
-        transform: translatey(30px);
-    }
-    100% {
-        transform: translatey(0px);
-    }
+.start input:hover {
+    cursor: pointer;
+    background-color: #130f0d;
+    color: hsl(32, 98%, 56%);
+    border-color: hsl(32, 98%, 56%);
 }
 
 .square-quiz {
@@ -293,6 +295,18 @@ h1 {
     background-color: #130f0d;
     color: hsl(32, 98%, 56%);
     border-color: hsl(32, 98%, 56%);
+}
+
+@keyframes float {
+    0% {
+        transform: translatey(0px);
+    }
+    50% {
+        transform: translatey(30px);
+    }
+    100% {
+        transform: translatey(0px);
+    }
 }
 
 @media screen and (max-width: 811px) {

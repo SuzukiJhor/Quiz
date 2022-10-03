@@ -139,15 +139,18 @@ const restart = () => {
             item.checked = false
         }
     })
-
-    // internalDisplay.classList.add('hide');
-    externalDisplay.classList.add('hide');
-    console.log(internalDisplay)
-
-
+    window.location.reload()
 }
+
+// const startWhere = () => {
+//     externalDisplay.classList.add('hide')
+//     internalDisplay.innerHTML = ''
+//     const confirmMessage = document.querySelector('.confirmaion-message')
+//     const btnControls = document.querySelector('.confirmation-button')
+//     internalDisplay.append(confirmMessage)
+//     internalDisplay.append(btnControls)
+// }
 
 startBtn.addEventListener('click', showGame)
 submitBtn.addEventListener('click', confirmSubmit)
 restartBtn.addEventListener('click', restart)
-    // restart()
