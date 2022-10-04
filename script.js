@@ -33,8 +33,6 @@ const controlBtnNext = () => {
     if (state.page == state.lastPage) {
         next.style.visibility = 'hidden'
     }
-
-
 }
 
 const controlBtnPrev = () => {
@@ -141,15 +139,6 @@ const restart = () => {
     })
     window.location.reload()
 }
-
-// const startWhere = () => {
-//     externalDisplay.classList.add('hide')
-//     internalDisplay.innerHTML = ''
-//     const confirmMessage = document.querySelector('.confirmaion-message')
-//     const btnControls = document.querySelector('.confirmation-button')
-//     internalDisplay.append(confirmMessage)
-//     internalDisplay.append(btnControls)
-// }
 
 startBtn.addEventListener('click', showGame)
 submitBtn.addEventListener('click', confirmSubmit)
